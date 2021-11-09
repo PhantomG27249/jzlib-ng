@@ -28,7 +28,7 @@ package io.github.duplexsystem.jzlibng;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.zip.CRC32;
-import java.util.zip.Deflater;
+
 
 /**
  * This class implements a stream filter for writing compressed data in
@@ -82,7 +82,7 @@ public class FastGZIPOutputStream extends FastDeflaterOutputStream {
      *        if {@code true} invocation of the inherited
      *        {@link FastDeflaterOutputStream#flush() flush()} method of
      *        this instance flushes the compressor with flush mode
-     *        {@link Deflater#SYNC_FLUSH} before flushing the output
+     *        {@link FastDeflater#SYNC_FLUSH} before flushing the output
      *        stream, otherwise only flushes the output stream
      * @throws    IOException If an I/O error has occurred.
      * @throws    IllegalArgumentException if {@code size <= 0}
@@ -123,7 +123,7 @@ public class FastGZIPOutputStream extends FastDeflaterOutputStream {
      *        if {@code true} invocation of the inherited
      *        {@link FastDeflaterOutputStream#flush() flush()} method of
      *        this instance flushes the compressor with flush mode
-     *        {@link Deflater#SYNC_FLUSH} before flushing the output
+     *        {@link FastDeflater#SYNC_FLUSH} before flushing the output
      *        stream, otherwise only flushes the output stream
      *
      * @throws    IOException If an I/O error has occurred.
@@ -187,7 +187,7 @@ public class FastGZIPOutputStream extends FastDeflaterOutputStream {
         out.write(new byte[] {
                 (byte) GZIP_MAGIC,        // Magic number (short)
                 (byte)(GZIP_MAGIC >> 8),  // Magic number (short)
-                Deflater.DEFLATED,        // Compression method (CM)
+                FastDeflater.DEFLATED,        // Compression method (CM)
                 0,                        // Flags (FLG)
                 0,                        // Modification time MTIME (int)
                 0,                        // Modification time MTIME (int)

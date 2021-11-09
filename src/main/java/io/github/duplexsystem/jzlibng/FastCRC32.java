@@ -87,6 +87,9 @@ public class FastCRC32 implements Checksum {
      *
      * @since 1.8
      */
+
+
+    //Replace bytebuffer with unsafe were possible
     @Override
     public void update(ByteBuffer buffer) {
         int pos = buffer.position();
@@ -114,9 +117,11 @@ public class FastCRC32 implements Checksum {
         buffer.position(limit);
     }
 
+
     /**
      * Resets CRC-32 to initial value.
      */
+
     @Override
     public void reset() {
         crc = 0;

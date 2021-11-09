@@ -29,6 +29,7 @@ import java.io.FilterOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.zip.Deflater;
+//import java.util.zip.Deflater;
 
 /**
  * This class implements an output stream filter for compressing data in
@@ -271,7 +272,7 @@ public class FastDeflaterOutputStream extends FilterOutputStream {
     public void flush() throws IOException {
         if (syncFlush && !def.finished()) {
             int len = 0;
-            while ((len = def.deflate(buf, 0, buf.length, Deflater.SYNC_FLUSH)) > 0)
+            while ((len = def.deflate(buf, 0, buf.length, FastDeflater.SYNC_FLUSH)) > 0)
             {
                 out.write(buf, 0, len);
                 if (len < buf.length)
